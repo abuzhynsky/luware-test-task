@@ -141,6 +141,8 @@
     <Compile Include="ViewModel\Command\CommandExtensions.cs" />
     <Compile Include="ViewModel\Command\IAsyncCommand.cs" />
     <Compile Include="ViewModel\Command\IRaiseCanExecuteChanged.cs" />
+    <Compile Include="ViewModel\Converter\Colors.cs" />
+    <Compile Include="ViewModel\Converter\LyncStatusToColorConverter.cs" />
     <Compile Include="ViewModel\Notification\INotificationService.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Notification\NotificationService.cs" />

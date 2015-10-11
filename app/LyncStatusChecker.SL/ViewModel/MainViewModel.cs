@@ -70,7 +70,7 @@ namespace LyncStatusChecker.SL.ViewModel
                 }
 
                 _sipUri = value;
-                _state = LyncStatus.Unknown;
+                _state = LyncStatus.None;
                 RaisePropertyChanged(nameof(SipUri));
             }
         }
