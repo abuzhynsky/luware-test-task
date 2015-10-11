@@ -146,6 +146,7 @@
     <Compile Include="ViewModel\Notification\INotificationService.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Notification\NotificationService.cs" />
+    <Compile Include="ViewModel\Validation\ValidationHandler.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>

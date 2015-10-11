@@ -18,7 +18,7 @@
             <ColumnDefinition Width="100" />
             <ColumnDefinition Width="50" />
         </Grid.ColumnDefinitions>
-        <TextBox Text="{Binding SipUri, Mode=TwoWay}" VerticalAlignment="Center" Padding="3" FontSize="28" HorizontalAlignment="Stretch"/>
+        <TextBox Text="{Binding SipUri, Mode=TwoWay, ValidatesOnDataErrors=True}" VerticalAlignment="Center" Padding="3" FontSize="28" HorizontalAlignment="Stretch"/>
         <Button Grid.Column="1" Command="{Binding GetPresenceCommand}" Content="Get Presence" HorizontalAlignment="Stretch" Margin="3,0,3,0" />
         <Ellipse Grid.Column="2">
             <Ellipse.Fill>

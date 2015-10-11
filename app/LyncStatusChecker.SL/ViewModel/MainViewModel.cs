@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
@@ -7,13 +8,15 @@ using LyncStatusChecker.SL.Model.Exceptions;
 using LyncStatusChecker.SL.Model.Service;
 using LyncStatusChecker.SL.ViewModel.Command;
 using LyncStatusChecker.SL.ViewModel.Notification;
+using LyncStatusChecker.SL.ViewModel.Validation;
 
 namespace LyncStatusChecker.SL.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase, IDataErrorInfo
     {
         private readonly PresenceService _presenceService;
         private readonly INotificationService _notificationService;
+        private readonly ValidationHandler _validationHandler = new ValidationHandler();
 
         public MainViewModel(PresenceService presenceService, INotificationService notificationService)
         {
@@ -30,7 +33,7 @@ namespace LyncStatusChecker.SL.ViewModel
             _presenceService = presenceService;
             _notificationService = notificationService;
 
-            _getPresenceCommand = new AwaitableDelegateCommand(GetPresence);
+            _getPresenceCommand = new AwaitableDelegateCommand(GetPresence, CanCheckPresence);
 
             SipUri = "sip:mjakob@luware.net";
         }
@@ -42,9 +45,9 @@ namespace LyncStatusChecker.SL.ViewModel
                 var presence = await _presenceService.Get(_sipUri);
                 State = presence.State;
             }
-            catch (UserNotFoundException e)
+            catch (UserNotFoundException)
             {
-                _notificationService.ShowMessage(e.Message);
+                _notificationService.ShowMessage("Not found");
             }
             catch (ServiceUnavailableException e)
             {
@@ -55,6 +58,11 @@ namespace LyncStatusChecker.SL.ViewModel
         private string _sipUri;
         private LyncStatus _state;
         private readonly ICommand _getPresenceCommand;
+
+        private bool CanCheckPresence()
+        {
+            return IsValidUri(_sipUri);
+        }
 
         public string SipUri
         {
@@ -72,7 +80,16 @@ namespace LyncStatusChecker.SL.ViewModel
                 _sipUri = value;
                 _state = LyncStatus.None;
                 RaisePropertyChanged(nameof(SipUri));
+
+                _validationHandler.ValidateRule(nameof(SipUri), "Invalid sip uri", () => IsValidUri(_sipUri));
+
+                GetPresenceCommand.RaiseCanExecuteChanged();
             }
+        }
+
+        private static bool IsValidUri(string value)
+        {
+            return Uri.IsWellFormedUriString(value, UriKind.Absolute);
         }
 
         public LyncStatus State
@@ -96,6 +113,19 @@ namespace LyncStatusChecker.SL.ViewModel
         public ICommand GetPresenceCommand
         {
             get { return _getPresenceCommand; }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                return _validationHandler.BrokenRuleExists(columnName) ? _validationHandler[columnName] : null;
+            }
+        }
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }
