@@ -18,7 +18,6 @@ namespace LyncStatusChecker.SL.Tests
 
         private const string ExistingUserSip = "sip:mjakob@luware.net";
         private const string MissingUserSip = "sip:missingUser@luware.net";
-        private const string Unknown = "Unknown";
 
         public PresenceServiceTests()
         {
@@ -27,8 +26,7 @@ namespace LyncStatusChecker.SL.Tests
             _existingPresenceResult = fixture.Create<PresenceResult>();
 
             var unknownPresence = fixture.Create<PresenceResult>();
-            unknownPresence.ActivityStatus = Unknown;
-            unknownPresence.DisplayName = Unknown;
+            unknownPresence.PresenceState = 0;
 
             var presenceRepositoryMock = new Mock<IPresenceRepository>();
             presenceRepositoryMock.Setup(_ => _.Get(ExistingUserSip)).ReturnsAsync(_existingPresenceResult);
