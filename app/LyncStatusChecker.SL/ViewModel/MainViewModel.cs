@@ -2,10 +2,10 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using LyncStatusChecker.SL.Model.Enum;
 using LyncStatusChecker.SL.Model.Exceptions;
 using LyncStatusChecker.SL.Model.Service;
+using LyncStatusChecker.SL.ViewModel.Command;
 using LyncStatusChecker.SL.ViewModel.Notification;
 
 namespace LyncStatusChecker.SL.ViewModel
@@ -29,7 +29,7 @@ namespace LyncStatusChecker.SL.ViewModel
 
             _presenceService = presenceService;
             _notificationService = notificationService;
-            _getPresenceCommand = new RelayCommand(async () => await GetPresence());
+            _getPresenceCommand = new AwaitableDelegateCommand(GetPresence);
         }
 
         private async Task GetPresence()
