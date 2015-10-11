@@ -9,18 +9,20 @@ namespace LyncStatusChecker.SL.ViewModel
 {
     public class ViewModelLocator
     {
+        private const string ServiceUrl = "http://starmind.luware.net:9310";
+
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            SimpleIoc.Default.Register<IRestClient>(() => new RestClient("http://starmind.luware.net:9310"));
+            SimpleIoc.Default.Register<IRestClient>(() => new RestClient(ServiceUrl));
             SimpleIoc.Default.Register<IPresenceRepository, PresenceRepository>();
             SimpleIoc.Default.Register<PresenceService>();
             SimpleIoc.Default.Register<INotificationService, NotificationService>();
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
-        public MainViewModel Main
+        public static MainViewModel Main
         {
             get
             {
