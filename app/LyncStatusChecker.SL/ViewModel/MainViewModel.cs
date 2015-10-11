@@ -29,7 +29,10 @@ namespace LyncStatusChecker.SL.ViewModel
 
             _presenceService = presenceService;
             _notificationService = notificationService;
+
             _getPresenceCommand = new AwaitableDelegateCommand(GetPresence);
+
+            SipUri = "sip:mjakob@luware.net";
         }
 
         private async Task GetPresence()
