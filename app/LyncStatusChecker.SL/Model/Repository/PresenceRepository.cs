@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Threading.Tasks;
 using LyncStatusChecker.SL.Model.Exceptions;
 using LyncStatusChecker.SL.Model.Repository.Dto;
@@ -26,7 +25,7 @@ namespace LyncStatusChecker.SL.Model.Repository
         {
             var request = PresenceRequestFactory.Create(sipUri);
 
-            var result = await _restClient.GetAsync<PresenceResponse>(request);
+            var result = await _restClient.GetResponseContentAsync<PresenceResponse>(request);
 
             if (result == null)
             {

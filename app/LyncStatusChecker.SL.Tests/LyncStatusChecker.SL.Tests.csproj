@@ -86,7 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LyncStatusChecker.SL\LyncStatusChecker.SL.csproj">
-      <Project>{fc26ec2c-4bad-47b1-95e6-ca3810d7f92d}</Project>
+      <Project>{2f3f87a7-045c-4078-b0a9-6209741cbeb6}</Project>
       <Name>LyncStatusChecker.SL</Name>
     </ProjectReference>
   </ItemGroup>

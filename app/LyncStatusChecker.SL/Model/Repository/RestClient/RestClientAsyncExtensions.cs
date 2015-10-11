@@ -1,70 +1,24 @@
-﻿using System;
-using System.Threading;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using RestSharp;
 
 namespace LyncStatusChecker.SL.Model.Repository.RestClient
 {
-    //code from RestSharp project 
-    //Added because Silverlight version of RestSharp lacks GetTaskAsync method
-
     public static class RestClientAsyncExtensions
     {
-        public static Task<T> GetAsync<T>(this IRestClient client, RestRequest request)
+        public static Task<T> GetResponseContentAsync<T>(this IRestClient client, RestRequest request) where T : new()
         {
-            return client.ExecuteGetTaskAsync<T>(request).ContinueWith(x => x.Result.Data);
-        }
+            var taskCompletionSource = new TaskCompletionSource<T>();
 
-        private static Task<IRestResponse<T>> ExecuteGetTaskAsync<T>(this IRestClient client, IRestRequest request)
-        {
-            return client.ExecuteGetTaskAsync<T>(request, CancellationToken.None);
-        }
-
-        private static Task<IRestResponse<T>> ExecuteGetTaskAsync<T>(this IRestClient client, IRestRequest request, CancellationToken token)
-        {
-            if (request == null)
+            client.GetAsync<T>(request, (response, handle) =>
             {
-                throw new ArgumentNullException("request");
-            }
+                taskCompletionSource.SetResult(response.Data);
 
-            request.Method = Method.GET;
-            return client.ExecuteTaskAsync<T>(request, token);
-        }
-
-        private static Task<IRestResponse<T>> ExecuteTaskAsync<T>(this IRestClient client, IRestRequest request, CancellationToken token)
-        {
-            if (request == null)
-            {
-                throw new ArgumentNullException("request");
-            }
-
-            var taskCompletionSource = new TaskCompletionSource<IRestResponse<T>>();
-            try
-            {
-                var async = client.ExecuteAsync<T>(request, (response, _) =>
+                if (response.ErrorException != null)
                 {
-                    if (token.IsCancellationRequested)
-                    {
-                        taskCompletionSource.TrySetCanceled();
-                    }
-                    else
-                    {
-                        taskCompletionSource.TrySetResult(response);
-                    }
-                });
-
-                var registration = token.Register(() =>
-                {
-                    async.Abort();
-                    taskCompletionSource.TrySetCanceled();
-                });
-
-                taskCompletionSource.Task.ContinueWith(t => registration.Dispose(), token);
-            }
-            catch (Exception ex)
-            {
-                taskCompletionSource.TrySetException(ex);
-            }
+                    Debug.WriteLine($"Exception during web service call: {response.ErrorException}");
+                }
+            });
 
             return taskCompletionSource.Task;
         }

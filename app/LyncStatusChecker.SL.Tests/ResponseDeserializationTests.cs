@@ -25,7 +25,7 @@ namespace LyncStatusChecker.SL.Tests
         {
             var request = PresenceRequestFactory.Create(expectedResult.SipUri);
 
-            var response = await _client.GetAsync<PresenceResponse>(request);
+            var response = await _client.GetResponseContentAsync<PresenceResponse>(request);
 
             Assert.NotNull(response);
             Assert.NotNull(response.PresenceResult);

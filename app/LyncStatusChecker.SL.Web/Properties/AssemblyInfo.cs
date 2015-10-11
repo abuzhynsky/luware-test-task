@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LyncStatusChecker.SL")]
+[assembly: AssemblyTitle("LyncStatusChecker.SL.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LyncStatusChecker.SL")]
+[assembly: AssemblyProduct("LyncStatusChecker.SL.Web")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2f3f87a7-045c-4078-b0a9-6209741cbeb6")]
+[assembly: Guid("efa200b1-3883-46b1-9b8a-7e1876b59bf0")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -4,6 +4,8 @@ namespace LyncStatusChecker.SL.Model.Enum
 {
     public enum LyncStatus
     {
+        [Description("Unknown")]
+        Unknown,
         [Description("Offline")]
         Offline,
         [Description("Available")]

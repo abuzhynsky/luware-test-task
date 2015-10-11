@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyncStatusChecker.SL", "app\LyncStatusChecker.SL\LyncStatusChecker.SL.csproj", "{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyncStatusChecker.SL", "app\LyncStatusChecker.SL\LyncStatusChecker.SL.csproj", "{2F3F87A7-045C-4078-B0A9-6209741CBEB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyncStatusChecker.SL.Web", "app\LyncStatusChecker.SL.Web\LyncStatusChecker.SL.Web.csproj", "{EFA200B1-3883-46B1-9B8A-7E1876B59BF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyncStatusChecker.SL.Tests", "app\LyncStatusChecker.SL.Tests\LyncStatusChecker.SL.Tests.csproj", "{6533129A-165B-4F9E-90F0-EC41A49D204C}"
 EndProject
@@ -13,10 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F3F87A7-045C-4078-B0A9-6209741CBEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3F87A7-045C-4078-B0A9-6209741CBEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3F87A7-045C-4078-B0A9-6209741CBEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3F87A7-045C-4078-B0A9-6209741CBEB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFA200B1-3883-46B1-9B8A-7E1876B59BF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA200B1-3883-46B1-9B8A-7E1876B59BF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA200B1-3883-46B1-9B8A-7E1876B59BF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA200B1-3883-46B1-9B8A-7E1876B59BF0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6533129A-165B-4F9E-90F0-EC41A49D204C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6533129A-165B-4F9E-90F0-EC41A49D204C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6533129A-165B-4F9E-90F0-EC41A49D204C}.Release|Any CPU.ActiveCfg = Release|Any CPU

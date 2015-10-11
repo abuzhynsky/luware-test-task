@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Browser;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -26,6 +27,8 @@ namespace LyncStatusChecker.SL
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            bool httpResult = WebRequest.RegisterPrefix("http://", WebRequestCreator.ClientHttp);
+            bool httpsResult = WebRequest.RegisterPrefix("https://", WebRequestCreator.ClientHttp);
             this.RootVisual = new MainPage();
         }
 
