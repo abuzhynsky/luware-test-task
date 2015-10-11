@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyncStatusChecker.SL", "app\LyncStatusChecker.SL\LyncStatusChecker.SL.csproj", "{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LyncStatusChecker.SL.Tests", "app\LyncStatusChecker.SL.Tests\LyncStatusChecker.SL.Tests.csproj", "{6533129A-165B-4F9E-90F0-EC41A49D204C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC26EC2C-4BAD-47B1-95E6-CA3810D7F92D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6533129A-165B-4F9E-90F0-EC41A49D204C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6533129A-165B-4F9E-90F0-EC41A49D204C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6533129A-165B-4F9E-90F0-EC41A49D204C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6533129A-165B-4F9E-90F0-EC41A49D204C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
